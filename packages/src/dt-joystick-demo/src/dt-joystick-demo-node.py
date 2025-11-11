@@ -39,6 +39,36 @@ class DTJoystickDemoNode:
 
         ### TODO! You need to fill in this part to set the left and right wheel commands based on the
         ### the incoming joystick data contained in `msg`
+                # --- axes mapping (from your measurements) ---
+        # forward/back on axis 1, left/right (turn) on axis 3
+        fwd  = msg.axes[1] if len(msg.axes) > 1 else 0.0     # +1 up, -1 down
+        turn = msg.axes[3] if len(msg.axes) > 3 else 0.0     # +1 left, -1 right
+
+        # --- small deadband to ignore tiny noise ---
+        deadband = 0.05
+        if abs(fwd)  < deadband: fwd  = 0.0
+        if abs(turn) < deadband: turn = 0.0
+
+        # --- gains (tune these if needed) ---
+        k_v = 0.4   # linear gain (forward speed)
+        k_w = 0.8   # angular gain (turn speed)
+
+        # --- differential drive mixing ---
+        # left = v - w, right = v + w
+        v = k_v * fwd
+        w = k_w * turn
+        left  = v - w
+        right = v + w
+
+        # --- clamp to safe range ---
+        max_speed = 1.0
+        left  = max(-max_speed, min(max_speed, left))
+        right = max(-max_speed, min(max_speed, right))
+
+        # --- publish ---
+        cmd_to_publish.vel_left  = float(left)
+        cmd_to_publish.vel_right = float(right)
+
 
         # Finally we publish the data
         self.pub_wheel_cmds.publish(cmd_to_publish)

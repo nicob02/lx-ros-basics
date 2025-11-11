@@ -1,0 +1,8 @@
+prefix=/code/src/lx-ros-basics/packages/devel_isolated/dt-joystick-demo
+
+Name: dt-joystick-demo
+Description: Description of dt-joystick-demo
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

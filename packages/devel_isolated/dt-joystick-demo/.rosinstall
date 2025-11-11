@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /code/src/lx-ros-basics/packages/devel_isolated/dt-joystick-demo/setup.sh

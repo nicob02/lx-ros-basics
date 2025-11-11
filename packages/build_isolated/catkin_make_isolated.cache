@@ -1,0 +1,2 @@
+dt-joystick-demo:dt_joystick_demo_msgs
+-G Unix Makefiles -DCATKIN_DEVEL_PREFIX=/code/src/lx-ros-basics/packages/devel_isolated -DCMAKE_INSTALL_PREFIX=/code/src/lx-ros-basics/packages/install_isolated

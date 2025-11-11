@@ -1,0 +1,8 @@
+prefix=/code/src/lx-ros-basics/packages/devel_isolated/dt_joystick_demo_msgs
+
+Name: dt_joystick_demo_msgs
+Description: Description of dt_joystick_demo_msgs
+Version: 0.0.0
+Cflags: -I/code/src/lx-ros-basics/packages/devel_isolated/dt_joystick_demo_msgs/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

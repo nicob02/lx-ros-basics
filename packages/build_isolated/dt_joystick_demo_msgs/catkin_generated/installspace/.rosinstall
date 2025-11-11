@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /code/src/lx-ros-basics/packages/install_isolated/setup.sh
